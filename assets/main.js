@@ -1,20 +1,20 @@
 let answer = document.getElementById('answer');
-let attempt = 0;
+let attempt = document.getElementById('attempt');
 
 function guess() {
     let input = document.getElementById('user-guess');
-    if (answer.value === '' && attempt === 0) setHiddenFields();
+    if (answer.value === '' && attempt.value === '') setHiddenFields();
     if (!validateInput(input.value)) {
       return false;
     } else {
-      attempt = attempt + 1;
+      attempt.value = parseInt(attempt.value) + 1;
     }
     let isMatch = getResults(input.value);
     if (isMatch) {
       setMessage('You Win! :)');
       showAnswer(true);
       showReplay();
-    } else if (!isMatch && attempt >= 10) {
+    } else if (!isMatch && parseInt(attempt.value) >= 10) {
       setMessage('You Lose! :(');
       showAnswer(false);
       showReplay();
@@ -30,7 +30,7 @@ function setHiddenFields() {
     randomAnswer = '0' + randomAnswer;
   }
   answer.value = randomAnswer;
-  attempt = 0;
+  attempt.value = 0;
 }
 
 function setMessage(message) {
