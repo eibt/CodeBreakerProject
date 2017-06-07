@@ -4,8 +4,8 @@ let attempt = 0;
 function guess() {
     let input = document.getElementById('user-guess');
     if (answer.value === '' && attempt === 0) setHiddenFields();
-    if (validateInput(input.value)) {
-      attempt++;
+    if (validateInput(input.value) === true) {
+      attempt = attempt + 1;
     } else {
       return false;
     }
