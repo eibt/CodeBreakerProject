@@ -2,13 +2,13 @@ let answer = document.getElementById('answer');
 let attempt = 0;
 
 function guess() {
+    let input = document.getElementById('user-guess');
+    if (answer.value === '' && attempt === 0) setHiddenFields();
     if (!validateInput(input.value)) {
       return false;
     } else {
       attempt = attempt + 1;
     }
-    let input = document.getElementById('user-guess');
-    if (answer.value === '' && attempt === 0) setHiddenFields();
     let isMatch = getResults(input.value);
     if (isMatch) {
       setMessage('You Win! :)');
